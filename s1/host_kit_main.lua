@@ -24,18 +24,18 @@ end)
 
 --// checks host event for any blacklisted players, and handles accordingly
 HostEvent.OnServerEvent:Connect(function(plr, ev)
-	if not table.find(whitelist, plr.Name) then
-		plr:Kick("bye")
-	else
-		-- run code called from said HostEvent
-	end
+    if not table.find(whitelist, plr.Name) then
+        plr:Kick("bye")
+    else
+        -- run code called from said HostEvent
+    end
 end)
 
 --// check every frame to make sure it's not there
 RunService.Heartbeat:Connect(function()
-  for _, p in pairs (Players:GetPlayers()) do 
-    if p.PlayerGui:FindFirstChild("host_kit") and not table.find(whitelist, plr.Name) then
-      p.PlayerGui.host_kit:Destroy()
+    for _, p in pairs (Players:GetPlayers()) do 
+        if p.PlayerGui:FindFirstChild("host_kit") and not table.find(whitelist, plr.Name) then
+           p.PlayerGui.host_kit:Destroy()
+        end
     end
-  end
 end)
