@@ -26,9 +26,9 @@ end)
 HostEvent.OnServerEvent:Connect(function(plr, ev)
     if not table.find(whitelist, plr.Name) then
 		plr:Kick("Please do not exploit.")
-	else
+    else
 		-- run the code required from said HostEvent
-	end
+    end
 end)
 
 --// check every frame to make sure it's not there
