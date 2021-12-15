@@ -16,9 +16,9 @@ local whitelist = {}
 Players.PlayerAdded:Connect(function(plr)
     local gui = plr.PlayerGui.host_kit
     if table.find(whitelist, plr.Name) then
-      gui.Enabled = true
+        gui.Enabled = true
     else 
-      gui:Destroy())
+        gui:Destroy())
     end
 end)
 
