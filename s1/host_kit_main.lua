@@ -22,13 +22,13 @@ Players.PlayerAdded:Connect(function(plr)
     end
 end)
 
---// checks host event for any blacklisted players
+--// checks host event for any blacklisted players, and handles accordingly
 HostEvent.OnServerEvent:Connect(function(plr, ev)
-    if not table.find(whitelist, plr.Name) then
-		plr:Kick("Please do not exploit.")
-    else
-		-- run the code required from said HostEvent
-    end
+	if not table.find(whitelist, plr.Name) then
+		plr:Kick("bye")
+	else
+		-- run code called from said HostEvent
+	end
 end)
 
 --// check every frame to make sure it's not there
