@@ -1,3 +1,7 @@
+--[[
+    Base framework for handling host_kit functions. 
+]]--
+
 -- [ service ] --
 local Players, RunService = game:GetService("Players"), game:GetService("RunService")
 
@@ -20,7 +24,7 @@ end)
 
 --// checks host event for any blacklisted players
 HostEvent.OnServerEvent:Connect(function(plr, ev)
-	if not table.find(whitelist, plr.Name) then
+    if not table.find(whitelist, plr.Name) then
 		plr:Kick("Please do not exploit.")
 	else
 		-- run the code required from said HostEvent
