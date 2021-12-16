@@ -48,4 +48,4 @@ exit.Out.ClickDetector.MouseClick:Connect(function(plr)
 	end
 end)
 
-
+ 
