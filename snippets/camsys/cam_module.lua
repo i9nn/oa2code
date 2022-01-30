@@ -4,9 +4,6 @@ local TweenService = game:GetService("TweenService")
 -- [ objects ] --
 local cutscenes = workspace:WaitForChild("Cutscenes")
 
--- [ variables ] --
-
-
 -- [ module ] --
 local cam = {}
 

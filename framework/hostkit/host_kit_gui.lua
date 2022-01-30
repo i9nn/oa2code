@@ -9,8 +9,6 @@ local HostKitComm = game.ReplicatedStorage.HostKitComm
 
 -- [ functions ] --
 
--- [ GENERAL UTILITY
-
 --// Allows for collapsable host box
 title.ToggleBar.MouseButton1Up:Connect(function()
 	local text = title.ToggleBar.Text
@@ -32,8 +30,6 @@ for _, b in pairs (buttons.FrameButtons:GetChildren()) do
 		end)
 	end
 end
-
--- [ COMPETITION + MUSIC DATA
 
 --// Receive information from server to update Comps / Music
 HostKitComm.OnClientEvent:Connect(function(comps, music)

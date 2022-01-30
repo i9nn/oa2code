@@ -1,41 +1,22 @@
---[[
-    Base framework for handling host_kit functions. 
-]]--
-
--- [ service ] --
-local Players, RunService = game:GetService("Players"), game:GetService("RunService")
-
--- [ objects ] --
-local HostEvent = game.ReplicatedStorage.HostEvent
+-- [ services ] --
+local Players, Teams = game:GetService("Players"), game:GetService("Teams")
 
 -- [ variables ] --
-local whitelist = {}
+local teams = {
+    ["Production"] = {253, 254, 255},
+    ["Head of Household"] = {251},
+    ["Houseguest"] = {250},
+    ["Evicted"] = {249, 248}
+}
 
 -- [ functions ] --
---// remove gui from players who don't have access
 Players.PlayerAdded:Connect(function(plr)
-    local gui = plr.PlayerGui.host_kit
-    if table.find(whitelist, plr.Name) then
-        gui.Enabled = true
-    else 
-        gui:Destroy())
-    end
-end)
+    local rank = plr:GetRankInGroup(13009906)
 
---// checks host event for any blacklisted players, and handles accordingly
-HostEvent.OnServerEvent:Connect(function(plr, ev)
-    if not table.find(whitelist, plr.Name) then
-        plr:Kick("bye")
-    else
-        -- run code called from said HostEvent
-    end
-end)
-
---// check every frame to make sure it's not there
-RunService.Heartbeat:Connect(function()
-    for _, p in pairs (Players:GetPlayers()) do 
-        if p.PlayerGui:FindFirstChild("host_kit") and not table.find(whitelist, plr.Name) then
-           p.PlayerGui.host_kit:Destroy()
+    --// Loop through dictionary and compare ranks
+    for i, t in pairs (teams) do
+        if table.find(t[i], rank) then
+            plr.Team = Teams[teams[i]]
         end
-    end
+    end 
 end)
