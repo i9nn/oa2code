@@ -55,13 +55,15 @@ function cam.scene_play(gui, cs:string)
 	
 	for i = 1, #scene:GetChildren(), 1 do
 		local v = scene["View" .. i]
+		local speed, del = v.Speed.Value, v.Delay.Value
+
 		TweenService:Create(
 			cc, 
-			TweenInfo.new(v.Speed.Value, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut),
+			TweenInfo.new(speed, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut),
 			{CFrame = v.CFrame}
 		):Play()
 		
-		wait(v.Speed.Value + v.Delay.Value)
+		wait(speed + del)
 	end
 	
 	cam.wallpaper(gui, "on")
