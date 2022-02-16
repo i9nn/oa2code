@@ -14,10 +14,8 @@ function cam.camera_state(s:string)
 	
 	local cc = workspace.CurrentCamera
 	
-	repeat 
-		cc.CameraType = Enum.CameraType[s]
-	until 
-		cc.CameraType == Enum.CameraType[s]
+	repeat cc.CameraType = Enum.CameraType[s]
+	until cc.CameraType == Enum.CameraType[s]
 
 end
 
@@ -71,6 +69,7 @@ function cam.scene_play(gui, cs:string)
 	cam.camera_state("Custom")
 	cam.wallpaper(gui, "off")
 	cam.players_loaded = {}
+	
 end
 
 return cam
