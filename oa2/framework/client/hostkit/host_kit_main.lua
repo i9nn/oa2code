@@ -54,5 +54,7 @@ HostKitComm.OnServerEvent:Connect(function(plr, key, item, parent)
 				end
 			end
 		end
+	elseif key == "BW" then
+		
 	end
 end)
