@@ -3,6 +3,7 @@ local Players, ReplicatedStorage, TweenService = game.Players, game.ReplicatedSt
 
 -- [ objects ] --
 local HostKitActive, HostKitComm, HostKitStorage = workspace.HostKitActive, ReplicatedStorage.HostKitComm, game.ServerStorage.HostKitServerStorage
+local mem_wall = workspace:FindFirstChild("MemoryWall", true)
 
 -- [ variables ] --
 local can_fade, active_track = true, "Track1"
@@ -55,6 +56,25 @@ HostKitComm.OnServerEvent:Connect(function(plr, key, item, parent)
 			end
 		end
 	elseif key == "BW" then
-		
+		local side = item; local slot = parent
+
+		--// Intitialize memory wall picture variables
+		local pic = mem_wall:FindFirstChild(side, true):FindFirstChild(slot, true)
+		local hg, bg = pic.Houseguest, pic.Background -- Edit name of background 
+
+		--// Tween their photos + color accordingly 
+		if hg.ImageTransparency == 0 or hg.ImageTransparency == 1 then
+			local function edit_pic(color, transparency) 
+				TweenService:Create(bg, TweenInfo.new(), {BackgroundColor3 = color}):Play()
+				TweenService:Create(hg, TweenInfo.new(), {ImageTransparency = transparency}):Play()
+			end
+
+			local value = hg.ImageTransparency
+			if value == 0 then
+				edit_pic(Color3.fromRGB(170, 170, 170), 1)
+			else 
+				edit_pic(Color3.fromRGB(255, 255, 255), 0)
+			end
+		end
 	end
 end)

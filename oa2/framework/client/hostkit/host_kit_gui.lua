@@ -55,6 +55,8 @@ for _, b in pairs (container:GetDescendants()) do
 		b.MouseButton1Up:Connect(function()
 			if b:FindFirstAncestor("Comps") or b:FindFirstAncestor("Music") then
 				HostKitComm:FireServer("Spawn", b.Name, b.Parent.Parent.Name);
+			elseif b:FindFirstAncestor("Wall") then
+				HostKitComm:FireServer("BW", b.Name, b.Parent.Name)
 			end
 		end)
 		
