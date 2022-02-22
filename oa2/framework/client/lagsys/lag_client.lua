@@ -29,6 +29,8 @@ local buttons, texture_tog = cont.Buttons, cont.TextureToggle
 local textures = false
 
 -- [ functions ] --
+
+--// Edits all existing + new lag layers according to player presets 
 local function update_lag(group, lev)
     if group == "Objects" then
         for i = 1, lev, 1 do 
@@ -59,6 +61,7 @@ local function update_lag(group, lev)
     end
 end
 
+--// Sends data to server when lag data is edited on client 
 for _, b in pairs (buttons:GetChildren()) do 
     b.MouseButton1Up:Connect(function()
         lag_update:FireServer("ObjectsToggle", tonumber(b.Name))
@@ -66,6 +69,7 @@ for _, b in pairs (buttons:GetChildren()) do
     end)
 end
 
+--// Toggles textures according to mouse button input
 texture_tog.MouseButton1Up:Connect(function()
     if textures == false then
         texture_tog.Color = Color3.fromRGB(94, 247, 112); texture_tog.Text = "TEXTURES: ON"
